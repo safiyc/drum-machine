@@ -1,4 +1,8 @@
 import React from 'react';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import SoundDisplay from './components/SoundDisplay';
+import DrumPads from './components/DrumPads';
 
 import soundTest from './asset/animals_lion_growl_001.mp3';
 
@@ -27,8 +31,6 @@ export default class App extends React.Component {
     console.log(audio);
     audio.currentTime = 0;
     audio.play();
-
-    // console.log(e);
   }
 
   handleKeyPress(e) {
@@ -50,50 +52,12 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
+        <Header />
         <div id='drum-machine'>
-          <div id='display' style={{ height: '50px', backgroundColor: 'yellow' }}>
-            {this.state.display}
-          </div>
-
-          <div className='pads'>
-            <button className='drum-pad' value='81' id='aQ' onClick={this.handleClick}>
-              <audio src={soundTest} className='clip' id='Q'></audio>
-              Q
-            </button>
-            <button className='drum-pad' value='87' id='aW' onClick={this.handleClick}>
-              <audio src={soundTest} className='clip' id='W'></audio>
-              W
-            </button>
-            <button className='drum-pad' value='69' id='aE' onClick={this.handleClick}>
-              <audio src={soundTest} className='clip' id='E'></audio>
-              E
-            </button>
-            <button className='drum-pad' value='65' id='aA' onClick={this.handleClick}>
-              <audio src={soundTest} className='clip' id='A'></audio>
-              A
-            </button>
-            <button className='drum-pad' value='83' id='aS' onClick={this.handleClick}>
-              <audio src={soundTest} className='clip' id='S'></audio>
-              S
-            </button>
-            <button className='drum-pad' value='68' id='aD' onClick={this.handleClick}>
-              <audio src={soundTest} className='clip' id='D'></audio>
-              D
-            </button>
-            <button className='drum-pad' value='90' id='aZ' onClick={this.handleClick}>
-              <audio src={soundTest} className='clip' id='Z'></audio>
-              Z
-            </button>
-            <button className='drum-pad' value='88' id='aX' onClick={this.handleClick}>
-              <audio src={soundTest} className='clip' id='X'></audio>
-              X
-            </button>
-            <button className='drum-pad' value='67' id='aC' onClick={this.handleClick}>
-              <audio src={soundTest} className='clip' id='C'></audio>
-              C
-            </button>
-          </div>
+          <SoundDisplay showDisplay={this.state.display} />
+          <DrumPads clicked={this.handleClick} sound={soundTest} />
         </div>
+        <Footer />
       </div>
     );
   }
