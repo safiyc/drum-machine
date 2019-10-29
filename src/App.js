@@ -6,6 +6,72 @@ import DrumPads from './components/DrumPads';
 
 import soundTest from './asset/animals_lion_growl_001.mp3';
 
+const drumPads = [
+  {
+    value: 'Q',
+    id: 'idQ',
+    nestedAudio: {
+      src: soundTest
+    }
+  },
+  {
+    value: 'W',
+    id: 'idW',
+    nestedAudio: {
+      src: soundTest
+    }
+  },
+  {
+    value: 'E',
+    id: 'idE',
+    nestedAudio: {
+      src: soundTest
+    }
+  },
+  {
+    value: 'A',
+    id: 'idA',
+    nestedAudio: {
+      src: soundTest
+    }
+  },
+  {
+    value: 'S',
+    id: 'idS',
+    nestedAudio: {
+      src: soundTest
+    }
+  },
+  {
+    value: 'D',
+    id: 'idD',
+    nestedAudio: {
+      src: soundTest
+    }
+  },
+  {
+    value: 'Z',
+    id: 'idZ',
+    nestedAudio: {
+      src: soundTest
+    }
+  },
+  {
+    value: 'X',
+    id: 'idX',
+    nestedAudio: {
+      src: soundTest
+    }
+  },
+  {
+    value: 'C',
+    id: 'idC',
+    nestedAudio: {
+      src: soundTest
+    }
+  }
+];
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -34,7 +100,8 @@ export default class App extends React.Component {
   }
 
   handleKeyPress(e) {
-    const el = document.querySelector(`[value="${e.keyCode}"]`);
+    const el = document.querySelector(`[value="${e.key.toUpperCase()}"]`);
+
     if (el === null) {
       return;
     } else {
@@ -55,7 +122,19 @@ export default class App extends React.Component {
         <Header />
         <div id='drum-machine'>
           <SoundDisplay showDisplay={this.state.display} />
-          <DrumPads clicked={this.handleClick} sound={soundTest} />
+          <div id='drum-it'>
+            {drumPads.map((data, index) => {
+              return (
+                <DrumPads
+                  key={index}
+                  value={data.value}
+                  id={data.id}
+                  onClick={this.handleClick}
+                  nestedAudioSrc={data.nestedAudio.src}
+                  nestedAudioId={data.value} />
+              )
+            })}
+          </div>
         </div>
         <Footer />
       </div>
