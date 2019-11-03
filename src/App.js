@@ -1,10 +1,11 @@
 import React from 'react';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import SoundDisplay from './components/SoundDisplay';
-import DrumPads from './components/DrumPads';
+import GlobalStyle from './util/globalStyles';
+import * as HF from './appStyling';
+import * as S from './components/styling/drumMachineStyling';
 
+import DrumIt from './components/DrumPads';
 import soundTest from './asset/animals_lion_growl_001.mp3';
+import imageDrum from './asset/drum-set.png';
 
 const drumPads = [
   {
@@ -119,24 +120,37 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <Header />
-        <div id='drum-machine'>
-          <SoundDisplay showDisplay={this.state.display} />
-          <div id='drum-it'>
-            {drumPads.map((data, index) => {
-              return (
-                <DrumPads
-                  key={index}
-                  value={data.value}
-                  id={data.id}
-                  onClick={this.handleClick}
-                  nestedAudioSrc={data.nestedAudio.src}
-                  nestedAudioId={data.value} />
-              )
-            })}
-          </div>
-        </div>
-        <Footer />
+        <GlobalStyle />
+        <HF.Heading>
+          <HF.ProjectName>Drum It!</HF.ProjectName>
+        </HF.Heading>
+        <HF.Subheading>Scroll<br /> &#9660;&#9650;</HF.Subheading>
+        <S.ContentSection id='drum-machine'>
+          <S.SoundDisplay>{this.state.display}</S.SoundDisplay>
+          {/* <S.DrumSetContainer> */}
+          <S.ltrLocationTest>X</S.ltrLocationTest>
+          <S.DrumImg src={imageDrum} alt='testbg' />
+          <S.DrumStageOverlay />
+          <S.DrumStage />
+
+          {drumPads.map((data, index) => {
+            return (
+              <DrumIt
+                key={index}
+                value={data.value}
+                id={data.id}
+                onClick={this.handleClick}
+                nestedAudioSrc={data.nestedAudio.src}
+                nestedAudioId={data.value} />
+            )
+          })}
+          {/* </S.DrumSetContainer> */}
+        </S.ContentSection>
+        <HF.Footer>
+          <HF.FooterLink href="http://www.safiycham.com/">
+            Drum It!&nbsp;&ndash;&nbsp;safiy cham &nbsp;&#169;&nbsp;2019
+          </HF.FooterLink>
+        </HF.Footer>
       </div>
     );
   }
