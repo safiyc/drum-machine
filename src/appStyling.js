@@ -10,7 +10,7 @@ export const Heading = styled.div`
   height: 75px;
   padding-top: 8px;
   padding-bottom: 8px;
-  z-index: 100;
+  z-index: 500;
 
 `;
 
@@ -22,14 +22,26 @@ export const ProjectName = styled.h1`
   margin: 0;
 `;
 
-export const Subheading = styled.div`
-  background-color: white;
-  color: black;
-  height: calc(100vh - 150px);  /* 100vh - (heading + footer) */
-  text-align: center;
-  font-size: 4rem;
-  position: relative;
-  z-index: 50;
+export const Curtain = styled.div`
+  background-color: black;
+  height: calc(100vh - 142px);  /* 100vh - (heading + footer - 8px padding) */
+  position: relative; /* need for z-index */
+  z-index: 400;
+
+  & p {
+    text-align: center;
+    color: white;
+    font-size: 4rem;
+    margin-top: 0;
+    animation: color-beat 1.5s infinite;
+  }
+
+  @keyframes color-beat {
+    0% { color: white; padding-top: 0; }
+    50% { color: indigo; }
+    55% { color: white; }
+    100% { color: indigo; padding-top: 3px; }
+  }
 `;
 // #endregion
 
@@ -40,7 +52,7 @@ export const Footer = styled.footer`position: sticky;
   padding-top: 8px;
   padding-bottom: 8px;
   height: 75px;
-  z-index: 100;
+  z-index: 500;
 `;
 
 export const FooterLink = styled.a`
