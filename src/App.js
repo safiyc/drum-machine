@@ -87,6 +87,7 @@ export default class App extends React.Component {
         <HF.Curtain><p>&#9650;</p></HF.Curtain>
         <HF.Heading>
           <HF.ProjectName>Drum It!</HF.ProjectName>
+          <HF.Subheading>click it ~ keypress it</HF.Subheading>
         </HF.Heading>
         <S.ContentSection id='drum-machine'>
           <S.ContentOverlay />

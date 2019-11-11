@@ -1,22 +1,25 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import imageCrowd from '../../asset/crowd1.jpg';
 import imageStage from '../../asset/stage.jpg';
 
 import above from '../../util/breakpoints';
+import mobileHeight from '../../util/cssVariables';
 
 export const ContentSection = styled.div`
   background-image: url(${ imageCrowd});
-  height: 90vh;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 
   position: relative;
+  height: 90vh;
+  height: calc((${mobileHeight}, 1vh) * 100);
 
   ${above.med`
     max-width: 900px;
     margin: 0 auto;
+    height: 90vh;
   `};
 `;
 
@@ -80,6 +83,7 @@ export const StageAreaContainer = styled.div`
 
 export const DrumsetContainer = styled.div`
   width: 100%;
+  overflow: hidden;
 
   ${above.med`
     width: calc(100% - 50px);
@@ -87,10 +91,33 @@ export const DrumsetContainer = styled.div`
   `};
 `;
 
+const toggleSilhouette = () => keyframes`
+  0% {
+    filter: brightness(0);
+    transform: translateY(250px);
+  }
+  20% {
+    filter: brightness(0);
+  }
+  30% {
+    filter: brightness(.5);
+  }
+  31% {
+    filter: brightness(0);
+  }
+  40% {
+    transform: translateY(0px);
+  }
+  100% {
+    filter: brightness(1);
+  }
+`;
 export const DrumImg = styled.img`
   max-width: 100%;
   position: relative;  /* need for z-index */
   z-index: 15;
+
+  animation: ${toggleSilhouette()} ease-in 5s;
 `;
 
 export const Stage = styled.div`

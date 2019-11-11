@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import mobileHeight from './util/cssVariables';
 
 // this file - styles for Header, Footer,...
 
@@ -11,7 +12,6 @@ export const Heading = styled.div`
   padding-top: 8px;
   padding-bottom: 8px;
   z-index: 500;
-
 `;
 
 export const ProjectName = styled.h1`
@@ -22,9 +22,23 @@ export const ProjectName = styled.h1`
   margin: 0;
 `;
 
+export const Subheading = styled.div`
+  position: absolute;
+  color: grey;
+  font-size: .8rem;
+  bottom: -14px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+`;
+
 export const Curtain = styled.div`
   background-color: black;
-  height: calc(100vh - 142px);  /* 100vh - (heading + footer - 8px padding) */
+  /* 100vh - (heading + footer - 8px padding) */
+  /* height: calc(100vh - 142px); */
+  height: calc(((${mobileHeight}, 1vh) * 100) - 142px);
   position: relative; /* need for z-index */
   z-index: 400;
 
