@@ -1,6 +1,8 @@
 import styled from 'styled-components';
-import imageCrowd from '../../asset/crowd.jpg';
+import imageCrowd from '../../asset/crowd1.jpg';
 import imageStage from '../../asset/stage.jpg';
+
+import above from '../../util/breakpoints';
 
 export const ContentSection = styled.div`
   background-image: url(${ imageCrowd});
@@ -11,66 +13,106 @@ export const ContentSection = styled.div`
   background-size: cover;
 
   position: relative;
+
+  ${above.med`
+    max-width: 900px;
+    margin: 0 auto;
+  `};
 `;
 
-export const CrowdOverlay = styled.div`
+export const ContentOverlay = styled.div`
   position: absolute;
   top: 0;
-  height: 40%;
+  height: 100%;
   width: 100%;
   z-index: 20;
   background: initial;
-  background: linear-gradient(to bottom, rgba(0,0,0,1) 0%,rgba(0,0,0,.8) 16%,rgba(0,0,0,0.2) 90%,rgba(0,0,0,0) 100%);
+  background: linear-gradient(to bottom, rgba(0,0,0,1) 0%,rgba(0,0,0,.5) 5%, rgba(255,255,255,.35) 40%,rgba(255,255,255,0.2) 60%,rgba(0,0,0,0) 90%);
+
+  pointer-events: none;
+`;
+
+export const CrowdOverlay = styled(ContentOverlay)`
+  z-index: 5;
+  background: linear-gradient(to bottom, rgba(0,0,0,1) 0%,rgba(0,0,0,.35) 30%,rgba(255,255,255,0.3) 60%,rgba(0,0,0,.5) 90%);
+
+  pointer-events: none;
 `;
 
 export const SoundDisplay = styled.div`
   position: fixed;
   top: 75px;
+  left: 0;
+  right: 0;
   height: 40%;
   width: 100%;
 
-  z-index: 30;
+  z-index: 16;
   pointer-events: none;
 
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: top;
 
   & p {
-    color: indigo;
+    color: white;
+    text-shadow: 0 0 3px black; 
     font-size: 2rem;
     font-weight: 500;
   }
 `;
 
 export const StageAreaContainer = styled.div`
-  /* position: relative; */
-  /* border: 2px solid white; */
-  /* background: rgba(255,255,255,.5); */
-
   position: absolute;
   bottom: 0;
+
+  ${above.med`
+    width: 80vw;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    
+    bottom: -50px;
+    max-width: 700px;
+  `}
+`;
+
+export const DrumsetContainer = styled.div`
+  width: 100%;
+
+  ${above.med`
+    width: calc(100% - 50px);
+    margin: 0 auto;
+  `};
 `;
 
 export const DrumImg = styled.img`
   max-width: 100%;
-  /* border: 2px dotted red; */
   position: relative;  /* need for z-index */
   z-index: 15;
-  pointer-events: none;
 `;
 
-export const DrumStage = styled.div`
+export const Stage = styled.div`
   position: absolute;
   bottom: 0;
   height: 38%;
   width: 100%;
-  z-index: 1;
+  z-index: 10;
   background-image: url(${imageStage});
   box-shadow: inset 0 1px 0 0 rgba(255,255,255,.5), inset 0 8px 0 0 black, inset 0 13px 5px 0 rgba(0,0,0,.5);
+
+  ${above.med`
+    border-top-right-radius: 200px;  /* same val as StageOverlay */
+    border-top-left-radius: 200px;
+    border-right: 5px solid black;
+    border-left: 5px solid black;
+    
+    height: 33%;
+  `};
 `;
 
-export const DrumStageOverlay = styled.div`
+export const StageOverlay = styled.div`
   position: absolute;
   bottom: 0;
   height: 30%;
@@ -78,142 +120,13 @@ export const DrumStageOverlay = styled.div`
   z-index: 20;
   background: initial;
   background: linear-gradient(0deg, rgba(0,0,0,.95) 0%,rgba(0,0,0,.85) 15%, rgba(0,0,0,.65) 40%, rgba(255,255,255,0) 100%);
+  pointer-events: none;
+
+  ${above.med`
+    background: linear-gradient(0deg, rgba(0,0,0,.95) 0%,rgba(0,0,0,.85) 15%, rgba(0,0,0,.65) 40%, rgba(255,255,255,0) 100%);
+    border-top-left-radius: 200px;  /* same val as Stage */
+    border-top-right-radius: 200px;
+
+    height: 33%;  /* same as Stage val to keep radius expand ratio */
+  `};
 `;
-
-// #region drumpads will delete
-// export const DrumPads = styled.button`
-//   position: absolute;
-//   z-index: 100;
-//   background-color: rgba(255,0,0,.25);
-//   border: 1px dotted red;
-
-//   & .Q {
-//     height: 8%;
-//     width: 18.5%;
-//     bottom: 65.9%;
-//     left: 16%;
-//   }
-
-//   .W {
-//     height: 9%;
-//     width: 19%;
-//     bottom: 86.6%;
-//     left: 29.2%;
-//   }
-
-//   .E {
-//     height: 9%;
-//     width: 19%;
-//     bottom: 86.6%;
-//     left: 29.2%;
-//   }
-
-//   .A {
-//     height: 9%;
-//     width: 19%;
-//     bottom: 86.6%;
-//     left: 29.2%;
-//   }
-
-//   .S {
-//     height: 9%;
-//     width: 19%;
-//     bottom: 86.6%;
-//     left: 29.2%;
-//   }
-
-//   .D {
-//     height: 9%;
-//     width: 19%;
-//     bottom: 86.6%;
-//     left: 29.2%;
-//   }
-
-//   .Z {
-//     height: 9%;
-//     width: 19%;
-//     bottom: 86.6%;
-//     left: 29.2%;
-//   }
-
-//   .X {
-//     height: 9%;
-//     width: 19%;
-//     bottom: 86.6%;
-//     left: 29.2%;
-//   }
-
-//   .C {
-//     height: 9%;
-//     width: 19%;
-//     bottom: 86.6%;
-//     left: 29.2%;
-//   }
-// `;
-
-// export const LocQ = styled(DrumPads)`
-//   height: 8%;
-//     width: 18.5%;
-//     bottom: 65.9%;
-//     left: 16%;
-// `;
-
-// export const LocW = styled(DrumPads)`
-//       height: 9%;
-//     width: 19%;
-//     bottom: 86.6%;
-//     left: 29.2%;
-// `;
-
-// export const LocE = styled(DrumPads)`
-//   height: 13%;
-//     width: 16%;
-//     bottom: 62.4%;
-//     left: 39.25%;
-// `;
-
-// export const LocA = styled(DrumPads)`
-//   height: 11.5%;
-//     width: 21%;
-//     bottom: 47%;
-//     left: 33%;
-// `;
-
-// export const LocS = styled(DrumPads)`
-//   height: 11%;
-//     width: 22%;
-//     bottom: 68.2%;
-//     left: 55.5%;
-// `;
-
-// export const LocD = styled(DrumPads)`
-//   height: 12%;
-//     width: 19.5%;
-//     bottom: 47.6%;
-//     left: 61%;
-// `;
-
-// export const LocZ = styled(DrumPads)`
-//       height: 13%;
-//     width: 21%;
-//     bottom: 39.5%;
-//     left: 72.75%;
-//     z-index: 105;
-// `;
-
-// export const LocX = styled(DrumPads)`
-//   height: 9.5%;
-//     width: 20%;
-//     bottom: 79.2%;
-//     left: 76.75%;
-// `;
-
-// export const LocC = styled(DrumPads)`
-//   height: 28%;
-//     width: 11%;
-//     bottom: 14%;
-//     left: 49%;
-// `;
-// #endregion
-
-// export { imageDrum };

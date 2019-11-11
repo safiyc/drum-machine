@@ -1,80 +1,76 @@
 import React from 'react';
-// import * as S from './styling/drumMachineStyling';
 
 export default function DrumPads(props) {
   return (
     <button className={`drum-pad ${props.value}`} value={props.value} id={props.id} onClick={props.onClick} >
-      <style jsx='true'>{`
+      <style jsx='true' global='true'>{`
         .drum-pad {
           position: absolute;
-          z-index: 100;
-          // background-color: rgba(0,255,0,.2);
-          // border: 1px dotted black;
+          z-index: 17;
+          font-weight: 800;
+          color: rgba(255,165,0,.85);
+          text-shadow: 0 0 2px black;
           background-color: initial;
           border: none;
-        }
+          outline: none;
 
-        .drum-pad:hover {
-          background-color: rgba(0,255,0,.2);
-          border: 1px dotted black;
+          padding: 0;
+          height: fit-content;
+          width: fit-content;
+        }
+        .drum-pad:hover, .drum-pad-keyed {
+          color: yellow;
         }
         .Q {
-          height: 8%;
-          width: 18.5%;
-          bottom: 65.9%;
-          left: 16%;
+          bottom: 68%;
+          left: 12%;
+          font-size: calc(3vw + 3vh + 1vmin);
         }
         .W {
-          height: 9%;
-          width: 19%;
-          bottom: 86.6%;
-          left: 29.2%;
+          bottom: 90%;
+          left: 28%;
+          font-size: calc(2vw + 2vh + 1vmin);
         }
         .E {
-          height: 13%;
-          width: 16%;
-          bottom: 62.4%;
-          left: 39.25%;
+          bottom: 64%;
+          left: 41%;
+          font-size: calc(2vw + 2vh + 1vmin);
+          transform: skew(-40deg, 15deg);
         }
         .A {
-          height: 11.5%;
-          width: 21%;
-          bottom: 47%;
-          left: 33%;
+          bottom: 46%;
+          left: 35%;
+          font-size: calc(3.5vw + 3.5vh + 1vmin);
         }
         .S {
-          height: 11%;
-          width: 22%;
-          bottom: 68.2%;
-          left: 55.5%;
+          bottom: 73%;
+          left: 65%;
+          font-size: calc(1.5vw + 1.5vh + 1vmin);
         }
         .D {
-          height: 12%;
-          width: 19.5%;
-          bottom: 47.6%;
-          left: 61%;
+          bottom: 48%;
+          left: 65%;
+          font-size: calc(1.6vw + 1.6vh + 1vmin);
+          transform: skew(-65deg, 20deg);
         }
         .Z {
-          height: 13%;
-          width: 21%;
-          bottom: 39.5%;
-          left: 72.75%;
-          z-index: 105;
+          bottom: 39%;
+          left: 80%;
+          font-size: calc(2.3vw + 2.3vh + 1vmin);
+          transform: skew(-60deg, 15deg);
         }
         .X {
-          height: 9.5%;
-          width: 20%;
-          bottom: 79.2%;
-          left: 76.75%;
+          bottom: 83%;
+          left: 78%;
+          font-size: calc(2vw + 2vh + 1vmin);
+          transform: rotate(-15deg);
         }
         .C {
-          height: 28%;
-          width: 11%;
-          bottom: 14%;
-          left: 49%;
+          bottom: 20%;
+          left: 45%;
+          font-size: calc(6vw + 6vh + 1vmin);
         }
-      `}</style>
-      {props.value}
+      `}</style>{props.value}
       <audio className='clip' src={props.nestedAudioSrc} id={props.nestedAudioId}></audio>
     </button>
   );

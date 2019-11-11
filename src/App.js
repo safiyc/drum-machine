@@ -24,6 +24,7 @@ export default class App extends React.Component {
     // this.scrollToBottom = this.scrollToBottom.bind(this);
   }
 
+  // #region functions
   componentDidMount() {
     // unable to scroll on load, unless set setTimeout
     setTimeout(function () {
@@ -53,6 +54,7 @@ export default class App extends React.Component {
 
   handleKeyPress(e) {
     const el = document.querySelector(`[value="${e.key.toUpperCase()}"]`);
+    console.log(el);
 
     if (el === null) {
       return;
@@ -61,6 +63,11 @@ export default class App extends React.Component {
       console.log(audio);
       audio.currentTime = 0;
       audio.play();
+
+      el.classList.add('drum-pad-keyed');
+      setTimeout(function () {
+        el.classList.remove('drum-pad-keyed');
+      }, 150);
 
       this.setState({
         display: el.getAttribute('id')
@@ -71,6 +78,7 @@ export default class App extends React.Component {
   scrollToBottom = () => {
     this.pageBottomRef.current.scrollIntoView({ behavior: 'smooth' });
   }
+  // #endregion functions
 
   render() {
     return (
@@ -81,24 +89,26 @@ export default class App extends React.Component {
           <HF.ProjectName>Drum It!</HF.ProjectName>
         </HF.Heading>
         <S.ContentSection id='drum-machine'>
+          <S.ContentOverlay />
           <S.CrowdOverlay />
-          <S.SoundDisplay><p>{this.state.display}</p></S.SoundDisplay>
+          <S.SoundDisplay id='display'><p>{this.state.display}</p></S.SoundDisplay>
           <S.StageAreaContainer>
-            <S.DrumImg src={imageDrum} alt='testbg' />
-            <S.DrumStageOverlay />
-            <S.DrumStage />
-
-            {drumData.map((data, index) => {
-              return (
-                <DrumPads
-                  key={index}
-                  value={data.value}
-                  id={data.id}
-                  onClick={this.handleClick}
-                  nestedAudioSrc={data.nestedAudio.src}
-                  nestedAudioId={data.value} />
-              )
-            })}
+            <S.StageOverlay />
+            <S.Stage />
+            <S.DrumsetContainer>
+              <S.DrumImg src={imageDrum} alt='drumset' />
+              {drumData.map((data, index) => {
+                return (
+                  <DrumPads
+                    key={index}
+                    value={data.value}
+                    id={data.id}
+                    onClick={this.handleClick}
+                    nestedAudioSrc={data.nestedAudio.src}
+                    nestedAudioId={data.value} />
+                )
+              })}
+            </S.DrumsetContainer>
           </S.StageAreaContainer>
         </S.ContentSection>
         <HF.Footer>
