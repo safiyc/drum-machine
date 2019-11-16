@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/drum-it/static/css/main.34de6062.chunk.css",
+    "main.js": "/drum-it/static/js/main.c8a7d29d.chunk.js",
+    "main.js.map": "/drum-it/static/js/main.c8a7d29d.chunk.js.map",
+    "runtime-main.js": "/drum-it/static/js/runtime-main.a3fd06cb.js",
+    "runtime-main.js.map": "/drum-it/static/js/runtime-main.a3fd06cb.js.map",
+    "static/js/2.3aecc047.chunk.js": "/drum-it/static/js/2.3aecc047.chunk.js",
+    "static/js/2.3aecc047.chunk.js.map": "/drum-it/static/js/2.3aecc047.chunk.js.map",
+    "index.html": "/drum-it/index.html",
+    "precache-manifest.1a092765e1b8d0bfec41ae33e4881247.js": "/drum-it/precache-manifest.1a092765e1b8d0bfec41ae33e4881247.js",
+    "service-worker.js": "/drum-it/service-worker.js",
+    "static/css/main.34de6062.chunk.css.map": "/drum-it/static/css/main.34de6062.chunk.css.map",
+    "static/media/crowd1.jpg": "/drum-it/static/media/crowd1.a4a84a11.jpg",
+    "static/media/drum-set.png": "/drum-it/static/media/drum-set.fccf6d94.png",
+    "static/media/stage.jpg": "/drum-it/static/media/stage.697d4a53.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a3fd06cb.js",
+    "static/js/2.3aecc047.chunk.js",
+    "static/css/main.34de6062.chunk.css",
+    "static/js/main.c8a7d29d.chunk.js"
+  ]
+}
