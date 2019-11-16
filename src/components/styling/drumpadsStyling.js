@@ -15,17 +15,31 @@ const DrumBtn = styled.button`
   height: fit-content;
   width: fit-content;
 
-  animation: text-fade 4s ease-in;
+  animation: text-fade 3.5s ease-in; /* works with DrumImg animation */
   @keyframes text-fade {
     0% { 
       color: black;
     }
-    100% {
+    57% {
+      color: black;
+      margin-bottom: 0;
+    }
+    59% {
+      margin-bottom: 10px;
+    }
+    60% {
+      margin-bottom: -5px;
+    }
+    62% {
       color: rgba(255,165,0,.85);
+      margin-bottom: 0;
     }
   }
 
   &:hover {
+    color: yellow;
+  }
+  &.keyed {
     color: yellow;
   }
 

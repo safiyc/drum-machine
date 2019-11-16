@@ -6,12 +6,6 @@ import above from '../../util/breakpoints';
 import mobileHeight from '../../util/cssVariables';
 
 export const ContentSection = styled.div`
-  background-image: url(${ imageCrowd});
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
   position: relative;
   height: 90vh;
   height: calc((${mobileHeight}, 1vh) * 100);
@@ -33,6 +27,23 @@ export const ContentOverlay = styled.div`
   background: linear-gradient(to bottom, rgba(0,0,0,1) 0%,rgba(0,0,0,.5) 5%, rgba(255,255,255,.35) 40%,rgba(255,255,255,0.2) 60%,rgba(0,0,0,0) 90%);
 
   pointer-events: none;
+`;
+
+export const CrowdImg = styled.div`
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  max-width: 900px;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: url(${imageCrowd});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 1;
 `;
 
 export const CrowdOverlay = styled(ContentOverlay)`
@@ -101,6 +112,7 @@ const toggleSilhouette = () => keyframes`
   }
   30% {
     filter: brightness(.5);
+    transform: translateY(200px);
   }
   31% {
     filter: brightness(0);
@@ -117,7 +129,7 @@ export const DrumImg = styled.img`
   position: relative;  /* need for z-index */
   z-index: 15;
 
-  animation: ${toggleSilhouette()} ease-in 5s;
+  animation: ${toggleSilhouette()} ease-in 5s;  /* works with DrumBtn animation */
 `;
 
 export const Stage = styled.div`

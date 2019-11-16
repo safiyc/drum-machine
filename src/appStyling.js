@@ -67,6 +67,8 @@ export const Footer = styled.footer`position: sticky;
   padding-bottom: 8px;
   height: 75px;
   z-index: 500;
+
+  box-shadow: 0 10px 0 0 black; /* hack bc issue with bg image showing up below footer when browser zoomed in */
 `;
 
 export const FooterLink = styled.a`

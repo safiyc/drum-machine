@@ -64,9 +64,9 @@ export default class App extends React.Component {
       audio.currentTime = 0;
       audio.play();
 
-      el.classList.add('drum-pad-keyed');
+      el.classList.add('keyed');
       setTimeout(function () {
-        el.classList.remove('drum-pad-keyed');
+        el.classList.remove('keyed');
       }, 150);
 
       this.setState({
@@ -91,6 +91,7 @@ export default class App extends React.Component {
         </HF.Heading>
         <S.ContentSection id='drum-machine'>
           <S.ContentOverlay />
+          <S.CrowdImg />
           <S.CrowdOverlay />
           <S.SoundDisplay id='display'><p>{this.state.display}</p></S.SoundDisplay>
           <S.StageAreaContainer>
